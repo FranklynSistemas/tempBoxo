@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+  <title>Boxo</title>
+  <!-- Bootstrap -->
+  <link href="/css/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link href="/css/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+  <link href="/css/sweetalert.css" rel="stylesheet">
+  <link href="css/styleRegistroBoxoMensajeros.css" rel="stylesheet">
+
+  <!--Script-->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/jquery-ui.min.js"></script>
+  <!-- Bootstrap -->
+  <script src="/js/bootstrap.min.js"></script>
+  <script src="/js/sweetalert.min.js"></script>
+  <script src="/js/registro.js"></script>
+
+  <!--Fav and touch icons-->
+  <link rel="shortcut icon" href="/images/icon.png">
+  <link rel="apple-touch-icon" href="/images/icon.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/images/icon.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/images/icon.png">
+
+
+</head>
+<body>
+<div id="Cargando" style="display: none;">
+    <div id="Preloader"></div>
+    <h3>Cargando...</h3>
+</div>
+<!--<div id="Titulo">
+  <h1>Boxo</h1>
+</div>-->
+<div id="Logo"></div>
+<div style="display: none;" id="idUser">{{idUser}}</div>
+<div id="fondo"></div>
+<div id="Intro">
+<h3 style="margin-top: 8px;">{{NomUser}} <br/> <br/> Está a un paso de terminar su registro solo necesita llenar los siguientes campos y cargar los archivos para ser un miembro más de nuestro equipo!</h3>
+</div>
+<div class="container">  
+
+<div  id="contact">
+    <!--<fieldset>
+      <label id="ciudad">Ciudad: </label>
+      <select id="selectCiudad">
+        <option value="Bogota">Bogotá</option>
+        <option value="Barranquilla">Barranquilla</option>
+      </select>
+    </fieldset>-->
+    <fieldset>
+       <div class="icons"><i style="font-size: 16px;" class="fa fa-id-card" aria-hidden="true"></i></div><input placeholder="Número de documento" type="number" tabindex="1" id="NumDocumento"  autofocus>
+    </fieldset>
+    <fieldset>
+      <div class="icons"><i style="font-size: 16px;" class="fa fa-money" aria-hidden="true"></i></div><input placeholder="Número cuenta de ahorros" type="number" id="NumCtaAhorrox"  tabindex="2" >
+    </fieldset>
+    <fieldset>
+      <div class="icons"><i style="font-size: 16px;" class="fa fa-university" aria-hidden="true"></i></div><input placeholder="Banco" type="text" tabindex="3"  id="NomBanco"  >
+    </fieldset>
+    <fieldset>
+      <div class="icons"><i style="font-size: 20px;" class="fa fa-mobile" aria-hidden="true"></i></div><input placeholder="Número de télefono" type="tel" id="NumTel" tabindex="4" >
+    </fieldset>
+    <fieldset>
+      <div class="icons"><i style="font-size: 20px;" class="fa fa-map-marker" aria-hidden="true"></i></div><input placeholder="Dirección de residencia" type="text" id="Direccion" tabindex="5" >
+    </fieldset>
+     <fieldset>
+      <div class="icons"><i style="font-size: 20px;" class="fa fa-user" aria-hidden="true"></i></div><input placeholder="Nombre completo referencia personal" type="text" id="NomPerson" tabindex="6" >
+    </fieldset>
+    <fieldset>
+      <div class="icons"><i style="font-size: 20px;" class="fa fa-mobile" aria-hidden="true"></i></div><input placeholder="Número Celular referencia personal" type="text" tabindex="7" id="NumRefPerson" >
+    </fieldset>
+
+  <form enctype="multipart/form-data" id="Cedula" method="post">
+      <fieldset>
+          <input type="number" style="display: none;" name='type' value="1">
+          <input type="text" style="display: none;" name='id' value="{{idUser}}">
+          <input type="text" style="display: none;" id="nameCedula" value="">
+          <label id="Labels" style="margin-right: 20px;">Fotocopia de la cédula:</label><input type="file" tabindex="8"  name="FotocopiaCedula" required><a type="submit" id="btnCedula"><i class="fa fa-upload fa-3x"></i></span></a>
+      </fieldset>
+  </form>
+  <form enctype="multipart/form-data" id="ARL" method="post">
+      <fieldset>
+          <input type="number" style="display: none;" name='type' value="2">
+          <input type="text" style="display: none;" name='id' value="{{idUser}}">
+          <input type="text" style="display: none;" id="nameARL" value="">
+          <label id="Labels">Fotocopia afiliación ARL:</label><input type="file" tabindex="9" name="FotocopiaAfilARL" required><a id="btnARL"><i class="fa fa-upload fa-3x"></i></span></a>
+      </fieldset>
+  </form>
+  <form enctype="multipart/form-data" id="EPS" method="post">
+      <fieldset>
+          <input type="number" style="display: none;" name='type' value="3">
+          <input type="text" style="display: none;" name='id' value="{{idUser}}">
+          <input type="text" style="display: none;" id="nameEPS" value="">
+          <label id="Labels">Fotocopia afiliación EPS:</label><input type="file" tabindex="10" name="FotocopiaAfilEPS" required><a id="btnEPS"><i class="fa fa-upload fa-3x"></i></span></a>
+      </fieldset>
+  </form>
+  <form enctype="multipart/form-data" id="Recibo" method="post">
+      <fieldset>
+          <input type="number" style="display: none;" name='type' value="4">
+          <input type="text" style="display: none;" name='id' value="{{idUser}}">
+          <input type="text" style="display: none;" id="nameRecibo" value="">
+          <label style="margin-right: 70px;" id="Labels">Recibo público:</label><input type="file" tabindex="11" name="FotocopiaReciboPublico" ><a id="btnRecibo" required><i class="fa fa-upload fa-3x"></i></span></a>
+      </fieldset>
+  </form>
+    <fieldset>
+      <button name="submit" type="submit" id="contact-submit" data-submit="...Enviando">Finalizar</button>
+    </fieldset>
+  </div>
+</div>
+
+
+<!-- Modal -->
+<div id="myModal" class="modal fade in" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <div id="LogoModal"></div><!--<h1 class="modal-title">Boxo</h1>-->
+      </div>
+      <div class="modal-body">
+        <p>Es importante tener escaneados los siguientes documentos en formato <b>PDF</b>:  </p>
+        <ul id="lista">
+          <li>Fotocopia de la cédula</li>
+          <li>Fotocopia de afiliación a ARL</li>
+          <li>Fotocopia de afiliación a EPS</li>
+          <li>Fotocopia de un recibo público</li>
+        </ul>
+        <p>De no ser así este link fue enviado a su correo, podrá llenar el registro y subir los documentos cuando los tenga a la mano.</p>
+        <p align="center" style="color: #00BCD4;">Para llenar correctamente la información y subir los archivos requeridos tenga en cuenta el siguiente tutorial:</p>
+        <!--<div id="gif"></div>-->
+        <div id="video">
+        <video width="360" height="360" autoplay loop controls>
+            <source src="images/tuto.mp4" type="video/mp4">
+          Su navegador no soporta archivos de video, intente con Google Chrome !
+          </video>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" id="btnClose" data-dismiss="modal">Continuar</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+</body>
+</html>
